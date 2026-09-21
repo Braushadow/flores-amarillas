@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para ti 🌻</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow: hidden;
+
+            font-family: Georgia, "Times New Roman", serif;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #332811 0%,
+                    #1c1609 45%,
+                    #0e0c07 100%
+                );
+
+            color: #fff8df;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+
+            width: min(90%, 600px);
+
+            padding: 35px 25px;
+
+            animation: appear 2s ease forwards;
+        }
+
+
+        .main-flower {
+            font-size: 100px;
+
+            margin-bottom: 25px;
+
+            animation:
+                float 4s ease-in-out infinite,
+                glow 3s ease-in-out infinite;
+
+            filter:
+                drop-shadow(
+                    0 0 20px rgba(255, 205, 40, .45)
+                );
+        }
+
+        h1 {
+            font-size: clamp(2rem, 7vw, 3.5rem);
+
+            font-weight: normal;
+
+            margin-bottom: 30px;
+
+            opacity: 0;
+
+            animation:
+                fadeIn 2s ease 1s forwards;
+        }
+
+        .message {
+            font-size: clamp(1.05rem, 4vw, 1.3rem);
+
+            line-height: 1.9;
+
+            color: #eee2c0;
+
+            opacity: 0;
+
+            animation:
+                fadeIn 2s ease 2s forwards;
+        }
+
+        .signature {
+            margin-top: 35px;
+
+            font-size: 1.1rem;
+
+            color: #d9c58b;
+
+            opacity: 0;
+
+            animation:
+                fadeIn 2s ease 4s forwards;
+        }
+
+    
+        .music-button {
+            margin-top: 35px;
+
+            padding: 13px 24px;
+
+            border: 1px solid rgba(255, 216, 80, .4);
+
+            border-radius: 30px;
+
+            background:
+                rgba(255, 214, 70, .08);
+
+            color: #ffe99a;
+
+            font-family: Georgia, serif;
+
+            font-size: 1rem;
+
+            cursor: pointer;
+
+            opacity: 0;
+
+            animation:
+                fadeIn 2s ease 5s forwards;
+
+            transition:
+                background .3s ease,
+                transform .3s ease,
+                box-shadow .3s ease;
+        }
+
+        .music-button:hover {
+            background:
+                rgba(255, 214, 70, .18);
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 0 20px rgba(255, 214, 70, .15);
+        }
+
+        .music-button:active {
+            transform: scale(.96);
+        }
+
+       
+
+        .hint {
+            position: fixed;
+
+            bottom: 22px;
+
+            width: 100%;
+
+            font-family: Arial, sans-serif;
+
+            font-size: .75rem;
+
+            color:
+                rgba(255,255,255,.35);
+
+            opacity: 0;
+
+            animation:
+                fadeIn 2s ease 5.5s forwards;
+        }
+
+        /* 🌼 Flores que aparecen */
+
+        .little-flower {
+            position: fixed;
+
+            pointer-events: none;
+
+            z-index: 20;
+
+            font-size: 25px;
+
+            animation:
+                bloom 1.7s ease forwards;
+        }
+
+        /* 🌼 Pétalos */
+
+        .petal {
+            position: fixed;
+
+            top: -30px;
+
+            pointer-events: none;
+
+            z-index: 2;
+
+            animation:
+                fall linear forwards;
+        }
+
+        /* Animaciones */
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    scale(.96);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+        }
+
+        @keyframes float {
+
+            0%, 100% {
+                transform:
+                    translateY(0)
+                    rotate(-2deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px)
+                    rotate(2deg);
+            }
+        }
+
+        @keyframes glow {
+
+            0%, 100% {
+                filter:
+                    drop-shadow(
+                        0 0 12px
+                        rgba(255, 205, 40, .25)
+                    );
+            }
+
+            50% {
+                filter:
+                    drop-shadow(
+                        0 0 30px
+                        rgba(255, 205, 40, .55)
+                    );
+            }
+        }
+
+        @keyframes fall {
+
+            from {
+                transform:
+                    translateY(-30px)
+                    translateX(0)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+
+            10% {
+                opacity: .8;
+            }
+
+            100% {
+                transform:
+                    translateY(110vh)
+                    translateX(80px)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+        @keyframes bloom {
+
+            0% {
+                transform:
+                    scale(.2)
+                    rotate(-20deg);
+
+                opacity: 0;
+            }
+
+            35% {
+                transform:
+                    scale(1.4)
+                    rotate(10deg);
+
+                opacity: 1;
+            }
+
+            100% {
+                transform:
+                    scale(1)
+                    rotate(0deg);
+
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+
+        <div class="main-flower">
+            🌻
+        </div>
+
+        <h1>
+            Para ti
+        </h1>
+
+        <p class="message">
+
+            Hoy pensé en regalarte flores.<br>
+
+            Como no sabía si hacerlo o
+            si quisieras recibirlas de mi,
+            hice estas.<br><br>
+
+            No tienes que responder nada.<br>
+
+            Solo quería que hoy recibieras
+            algo bonito de mi parte, 
+            de esos algo del corazón. 🌻
+
+        </p>
+
+        <p class="signature">
+            —B
+        </p>
+
+        <button
+            class="music-button"
+            onclick="escucharCancion()"
+        >
+            🎵 Escuchar la canción
+        </button>
+
+    </main>
+
+    <div class="hint">
+
+        toca la pantalla 🌻
+    </div>
+
+
+    <script>
+
+
+        document.addEventListener(
+            "click",
+            function(event) {
+
+                if (
+                    event.target.classList.contains(
+                        "music-button"
+                    )
+                ) {
+                    return;
+                }
+
+        
+                const cantidad = 8 + Math.floor(
+                    Math.random() * 7
+                );
+
+                for (
+                    let i = 0;
+                    i < cantidad;
+                    i++
+                ) {
+
+                    const flower =
+                        document.createElement("div");
+
+                    flower.classList.add(
+                        "little-flower"
+                    );
+
+                    flower.textContent = "🌻";
+
+            
+
+                    const offsetX =
+                        (Math.random() - .5) * 180;
+
+                    const offsetY =
+                        (Math.random() - .5) * 180;
+
+                    flower.style.left =
+                        event.clientX
+                        + offsetX
+                        - 12
+                        + "px";
+
+                    flower.style.top =
+                        event.clientY
+                        + offsetY
+                        - 12
+                        + "px";
+
+                   
+
+                    flower.style.fontSize =
+                        (18 + Math.random() * 25)
+                        + "px";
+
+                    
+
+                    flower.style.animationDelay =
+                        (Math.random() * .25)
+                        + "s";
+
+                    document.body.appendChild(
+                        flower
+                    );
+
+                    setTimeout(
+                        () => flower.remove(),
+                        2000
+                    );
+                }
+
+            }
+        );
+
+
+       
+
+        function createPetal() {
+
+            const petal =
+                document.createElement("div");
+
+            petal.classList.add("petal");
+
+
+            const flowers = [
+                "🌼",
+                "🌻",
+                "✿"
+            ];
+
+            petal.textContent =
+                flowers[
+                    Math.floor(
+                        Math.random()
+                        * flowers.length
+                    )
+                ];
+
+            petal.style.left =
+                Math.random() * 100 + "vw";
+
+            petal.style.animationDuration =
+                (5 + Math.random() * 5)
+                + "s";
+
+            petal.style.fontSize =
+                (10 + Math.random() * 14)
+                + "px";
+
+            petal.style.opacity =
+                .2 + Math.random() * .5;
+
+            document.body.appendChild(
+                petal
+            );
+
+            setTimeout(
+                () => petal.remove(),
+                10000
+            );
+        }
+
+
+    
+
+        setInterval(
+            createPetal,
+            900
+        );
+
+
+
+        function escucharCancion() {
+
+            const youtubeURL =
+                "https://youtu.be/_HZM0QiuUS8?si=WpAQLNnPB9VMdknk";
+
+            window.open(
+                youtubeURL,
+                "_blank"
+            );
+        }
+
+    </script>
+
+</body>
+</html>
